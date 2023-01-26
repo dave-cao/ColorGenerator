@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Color Generator{% endblock %}
+{% block content %}
+    <h1>Upload New File</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/png, image/jpeg, image/jpg">
+        <input type="submit" value="Upload">
+
+    </form>
+
+    {% if image_path %}
+        <p>{{filename}}</p>
+        <img src="{{image_path}}" class="img-fluid">
+    {% endif %}
+
+{% endblock %}
