@@ -2,6 +2,7 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
+from sklearn.cluster import KMeans
 
 # image = Image.open("./static/uploads/bluelilies.jpg")
 
@@ -43,12 +44,28 @@ img_1 = cv.resize(img_1, dimensions, interpolation=cv.INTER_AREA)
 img_2 = cv.resize(img_2, dimensions, interpolation=cv.INTER_AREA)
 
 
-# GET AVERAGE
-temp = img_1.copy()
-temp[:, :, 0], temp[:, :, 1], temp[:, :, 2] = np.average(img_1, axis=(0, 1))
+def get_average():
+    # GET AVERAGE
+    temp = img_1.copy()
+    temp[:, :, 0], temp[:, :, 1], temp[:, :, 2] = np.average(img_1, axis=(0, 1))
 
-temp_2 = img_2.copy()
-temp_2[:, :, 0], temp_2[:, :, 1], temp_2[:, :, 2] = np.average(img_2, axis=(0, 1))
+    temp_2 = img_2.copy()
+    temp_2[:, :, 0], temp_2[:, :, 1], temp_2[:, :, 2] = np.average(img_2, axis=(0, 1))
 
-show_img_compare(temp, img_1)
-show_img_compare(temp_2, img_2)
+    show_img_compare(temp, img_1)
+    show_img_compare(temp_2, img_2)
+
+
+def palette(clusters):
+    width = 300
+    palette = np.zeros((50, width, 3), np.uint8)
+    steps = width / clusters.cluster_centers_.shape[0]
+    for idx, centers in enumerate(clusters.cluster_centers_):
+        palette[:, int(idx * steps) : (int((idx + 1) * steps)), :] = centers
+    return palette
+
+
+clt = KMeans(n_clusters=5)
+clt.fit(img_1.reshape(-1, 3))
+
+show_img_compare(img_1, palette(clt))
