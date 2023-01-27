@@ -53,13 +53,13 @@ def palette(clusters):
 
 
 def get_colors(PIL_image):
-    dim = (250, 150)
+    dim = (10, 5)
     print("reading image")
     img = np.array(PIL_image)
     img = cv.resize(img, dim, interpolation=cv.INTER_AREA)
 
     print("reversing array")
-    img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+    # img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
 
     print("clustering")
     clt = KMeans(n_clusters=5, n_init=10)
