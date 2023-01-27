@@ -53,10 +53,11 @@ def palette(clusters):
 
 
 def get_colors(PIL_image):
-    dim = (10, 5)
+    dim = (9, 6)
     print("reading image")
     img = np.array(PIL_image)
     img = cv.resize(img, dim, interpolation=cv.INTER_AREA)
+    print(img.shape)
 
     print("reversing array")
     # img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
