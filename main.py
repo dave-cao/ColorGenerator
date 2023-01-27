@@ -44,9 +44,9 @@ def home():
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], f"current_image.jpg"))
             image_path = uploaded_image_path(f"current_image.jpg")
 
-            pallette_path, color_hexes = get_image_pallette(file)
-            # pallette_path = "./static/uploads/current_image.jpg"
-            # color_hexes = ["#DFC3AA", "#1F1B15", "#9B806F", "#71C5DF", "#594C3D"]
+            # pallette_path, color_hexes = get_image_pallette(file)
+            pallette_path = "./static/uploads/current_image.jpg"
+            color_hexes = ["#DFC3AA", "#1F1B15", "#9B806F", "#71C5DF", "#594C3D"]
 
             return render_template(
                 "index.html",
