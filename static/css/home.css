@@ -131,6 +131,9 @@ label {
   height: 120px;
   animation: spin 2s linear infinite;
   animation-direction: reverse;
+  -webkit-animation: spin 2s linear infinite;
+  -webkit-animation-direction: reverse;
+
   display: none;
   margin: 1rem;
 }
@@ -152,5 +155,14 @@ label {
   }
   100% {
     transform: rotate(-359deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-359deg);
   }
 }
