@@ -32,7 +32,7 @@
         <div class="loader"></div>
     </div>
 
-    {% if image_path %}
+    {% if generated_colors %}
         <div class="color-hex-container">
             {% for color in color_hexes %}
                 <div class="color-hex tool" onclick="copyColor(event)" style="background-color: {{color}}"><span class="my-hex no-select">{{color}}</span>

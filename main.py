@@ -38,23 +38,22 @@ def home():
             return redirect(request.url)
 
         # secure filename cuz user input cannot be trusted
-        filename = secure_filename(file.filename)
-        e = os.path.splitext(filename)[1]
+        filename = file.filename
         if file and allowed_file(filename):
-            file.save(os.path.join(app.config["UPLOAD_FOLDER"], f"current_image.jpg"))
-            image_path = uploaded_image_path(f"current_image.jpg")
+            # file.save(os.path.join(app.config["UPLOAD_FOLDER"], f"current_image.jpg"))
+            # image_path = uploaded_image_path(f"current_image.jpg")
 
             # pallette_path, color_hexes = get_image_pallette(file)
             color_hexes = ["#DFC3AA", "#1F1B15", "#9B806F", "#71C5DF", "#594C3D"]
 
             return render_template(
                 "index.html",
-                image_path=image_path,
+                generated_colors=True,
                 filename=filename,
                 color_hexes=color_hexes,
             )
 
-    return render_template("index.html", image_path=None)
+    return render_template("index.html", generated_colors=False)
 
 
 def uploaded_image_path(filename):
