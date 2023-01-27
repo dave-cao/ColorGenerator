@@ -44,7 +44,7 @@ def home():
             # image_path = uploaded_image_path(f"current_image.jpg")
 
             color_hexes = get_image_pallette(file)
-            color_hexes = ["#DFC3AA", "#1F1B15", "#9B806F", "#71C5DF", "#594C3D"]
+            # color_hexes = ["#DFC3AA", "#1F1B15", "#9B806F", "#71C5DF", "#594C3D"]
 
             return render_template(
                 "index.html",
