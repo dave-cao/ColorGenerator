@@ -96,8 +96,4 @@ def get_image_pallette(img_file):
     color_pallette, color_RGBs = get_colors(img)
     color_hexes = get_all_hexes(color_RGBs)
 
-    pallette = Image.fromarray(color_pallette)
-    pallette_path = f"{UPLOAD_FOLDER}/current_pallette.jpg"
-    # pallette.save(pallette_path)
-
-    return pallette_path, color_hexes
+    return color_hexes
