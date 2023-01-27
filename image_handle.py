@@ -52,9 +52,9 @@ def palette(clusters):
     return palette
 
 
-def get_colors(img_path):
+def get_colors(PIL_image):
     print("reading image")
-    img = cv.imread(img_path)
+    img = np.array(PIL_image)
 
     print("reversing array")
     img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
@@ -91,8 +91,9 @@ def get_all_hexes(common_color_RGBs):
     return hexes
 
 
-def get_image_pallette(img_path):
-    color_pallette, color_RGBs = get_colors(img_path)
+def get_image_pallette(img_file):
+    img = Image.open(img_file)
+    color_pallette, color_RGBs = get_colors(img)
     color_hexes = get_all_hexes(color_RGBs)
 
     pallette = Image.fromarray(color_pallette)
