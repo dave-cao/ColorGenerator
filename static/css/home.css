@@ -122,18 +122,8 @@ label {
   visibility: visible;
   opacity: 1;
 }
-
 .loader {
-  border: 10px solid #f3f3f3; /* Light grey */
-  border-top: 10px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  animation: spin 3s infinite;
-  animation-direction: reverse;
-
   display: none;
-  margin: 1rem;
 }
 
 .loader-description {
@@ -146,6 +136,21 @@ label {
   flex-direction: column;
   align-items: center;
 }
+
+/* PREVIOUS LOADER WITH CSS / scraped cuz not working with iphone
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #3498db;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 3s linear infinite;
+  animation-direction: reverse;
+
+  display: none;
+  margin: 1rem;
+}
+
 
 @keyframes spin {
   0% {
@@ -172,3 +177,4 @@ label {
     transform: rotate3d(0, 0, 1, -359.9deg);
   }
 }
+*/

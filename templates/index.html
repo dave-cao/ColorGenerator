@@ -29,7 +29,7 @@
 
     <div class="loader-container">
         <div class="loader-description">Please wait while I grab your colors...</div>
-        <div class="loader"></div>
+        <img class="loader" src="{{ url_for("static", filename="uploads/loader.gif") }}">
     </div>
 
     {% if generated_colors %}
