@@ -149,7 +149,7 @@ label {
 
 @keyframes spin {
   100% {
-    -webkit-transform: rotate(-359.9deg);
-    transform: rotate(-359.9deg);
+    -webkit-transform: rotate3d(0, 0, 1, -359.9deg);
+    transform: rotate3d(0, 0, 1, -359.9deg);
   }
 }
