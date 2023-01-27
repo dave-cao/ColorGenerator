@@ -3,6 +3,17 @@ const loaderFunction = (event) => {
   let loaderDescription = document.querySelector(".loader-description");
   loader.style.display = "block";
   loaderDescription.style.display = "block";
+
+  // After 10 seconds update message
+  const second = 1000;
+  setTimeout(() => {
+    loaderDescription.innerHTML =
+      "Since this is hosted for free, it may take ~10-20 seconds to generate your pallette 😅.";
+  }, second * 5);
+
+  setTimeout(() => {
+    loaderDescription.innerHTML = "Nice weather today isn't it? Hehe...😫";
+  }, second * 20);
 };
 
 const copyColor = (event) => {

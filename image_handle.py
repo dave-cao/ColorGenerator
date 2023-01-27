@@ -56,7 +56,7 @@ def get_colors(PIL_image):
     dim = (9, 6)
     print("reading image")
     img = np.array(PIL_image)
-    img = cv.resize(img, dim, interpolation=cv.INTER_AREA)
+    # img = cv.resize(img, dim, interpolation=cv.INTER_AREA)
 
     print("reversing array")
     # img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
