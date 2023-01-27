@@ -38,3 +38,19 @@ const copyColor = (event) => {
   const body = document.querySelector("h1");
   body.style.color = hexCode;
 };
+
+const loadFile = (event) => {
+  file = event.target.files[0];
+  let reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function () {
+    localStorage.setItem("imageData", reader.result);
+  };
+};
+
+window.onload = function () {
+  let image_store = localStorage.getItem("imageData");
+  if (image_store !== null) {
+    document.getElementById("output").src = image_store;
+  }
+};

@@ -20,7 +20,8 @@
 
 
     <form method="post" enctype="multipart/form-data" onsubmit="loaderFunction(event)">
-            <input id="fileinput" class="btn btn-light" type="file" name="file" accept="image/png, image/jpeg, image/jpg" value="hello">
+            <input id="fileinput" class="btn btn-light" type="file" name="file" accept="image/png, image/jpeg, image/jpg" onchange="loadFile(event)">
+            <label for="file"></label>
 
         <input class="btn btn-dark" type="submit" value="🎨 Generate">
 
@@ -42,7 +43,7 @@
         </div>
 
         <p class="imagename">Current Image ~ <strong>{{filename}}</strong></p>
-        <img src="{{image_path}}" class="img-fluid">
+        <img id="output" class="img-fluid" width="400">
     {% endif %}
 
 {% endblock %}
