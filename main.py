@@ -1,4 +1,5 @@
 import os
+import time
 from datetime import date
 
 import numpy as np
@@ -24,7 +25,10 @@ def get_year():
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+
     if request.method == "POST":
+        start_time = time.time()
+
         file = request.files["file"]
 
         # check if file is a file ?? reread on this
@@ -45,6 +49,9 @@ def home():
 
             color_hexes = get_image_pallette(file)
             # color_hexes = ["#DFC3AA", "#1F1B15", "#9B806F", "#71C5DF", "#594C3D"]
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f"It took {round(elapsed_time, 2)} seconds to generate.")
 
             return render_template(
                 "index.html",
