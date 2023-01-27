@@ -5,6 +5,8 @@ from flask import (Flask, flash, redirect, render_template, request,
                    send_from_directory, url_for)
 from werkzeug.utils import secure_filename
 
+from image_handle import get_image_pallette
+
 UPLOAD_FOLDER = "./static/uploads"
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
@@ -35,11 +37,19 @@ def home():
 
         # secure filename cuz user input cannot be trusted
         filename = secure_filename(file.filename)
+        e = os.path.splitext(filename)[1]
         if file and allowed_file(filename):
-            file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-            image_path = uploaded_image_path(filename)
+            file.save(os.path.join(app.config["UPLOAD_FOLDER"], f"current_image.jpg"))
+            image_path = uploaded_image_path(f"current_image.jpg")
+
+            pallette_path, color_hexes = get_image_pallette(image_path)
+
             return render_template(
-                "index.html", image_path=image_path, filename=filename
+                "index.html",
+                image_path=image_path,
+                filename=filename,
+                pallette_path=pallette_path,
+                color_hexes=color_hexes,
             )
 
     return render_template("index.html", image_path=None)

@@ -1,17 +1,52 @@
 {% extends 'base.html' %}
 
 {% block title %}Color Generator{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{url_for("static", filename="css/home.css")}}">
+<style>
+/* {% if color_hexes %}
+    body {
+        background-color: {{color_hexes[0]}};
+    }
+
+{% endif %}
+
+*/
+</style> 
+{% endblock %}
 {% block content %}
-    <h1>Upload New File</h1>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/png, image/jpeg, image/jpg">
-        <input type="submit" value="Upload">
+    <h1>Color Pallette Generator</h1>
+
+
+
+    <form method="post" enctype="multipart/form-data" onsubmit="loaderFunction(event)">
+            <input id="fileinput" class="btn btn-light" type="file" name="file" accept="image/png, image/jpeg, image/jpg" value="hello">
+
+        <input class="btn btn-dark" type="submit" value="🎨 Generate">
 
     </form>
 
+    <div class="loader-container">
+        <div class="loader-description">Please wait while I grab your colors...</div>
+        <div class="loader"></div>
+    </div>
+
     {% if image_path %}
-        <p>{{filename}}</p>
+        <div class="color-hex-container">
+            {% for color in color_hexes %}
+                <div class="color-hex tool" onclick="copyColor(event)" style="background-color: {{color}}"><span class="my-hex no-select">{{color}}</span>
+                    <span class="tooltiptext">Click to copy color!</span>
+
+                </div>
+            {% endfor %}
+        </div>
+
+        <p class="imagename">Current Image ~ <strong>{{filename}}</strong></p>
         <img src="{{image_path}}" class="img-fluid">
     {% endif %}
 
+{% endblock %}
+
+{% block scripts %}
+<script src="{{url_for("static", filename="js/home.js")}}"></script>
 {% endblock %}

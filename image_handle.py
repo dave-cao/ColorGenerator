@@ -4,21 +4,7 @@ import numpy as np
 from PIL import Image
 from sklearn.cluster import KMeans
 
-# image = Image.open("./static/uploads/bluelilies.jpg")
-
-
-# pixel_array = np.array(image)
-
-# colours = {}
-
-# R, G, B = pixel_array[100, 150]
-
-# rgb_string = f"{R}, {G}, {B}"
-
-# print(np.average(pixel_array, axis=(0, 1)))
-
-# img = Image.fromarray(pixel_array, "RGB")
-# img.show()
+UPLOAD_FOLDER = "./static/uploads"
 
 
 def show_img_compare(img_1, img_2):
@@ -29,19 +15,6 @@ def show_img_compare(img_1, img_2):
     ax[1].axis("off")
     f.tight_layout()
     plt.show()
-
-
-# Get image arrays
-img_1 = cv.imread("./static/uploads/bluelilies.jpg")
-img_1 = cv.cvtColor(img_1, cv.COLOR_BGR2RGB)
-img_2 = cv.imread("./static/uploads/1994716.jpg")
-img_2 = cv.cvtColor(img_2, cv.COLOR_BGR2RGB)
-
-# resize image
-dimensions = (500, 300)
-
-img_1 = cv.resize(img_1, dimensions, interpolation=cv.INTER_AREA)
-img_2 = cv.resize(img_2, dimensions, interpolation=cv.INTER_AREA)
 
 
 def get_average():
@@ -56,6 +29,20 @@ def get_average():
     show_img_compare(temp_2, img_2)
 
 
+def get_most_common():
+    # reshape destructures the array so that it is just a list of lists
+    img_temp = img_1.copy()
+
+    # np.unique returns the SORTED unique elements of an array, can pass in
+    # a parameter return_counts which counts the number of times each unique value
+    # comes up in the input array
+    # the axis parameter makes it so it doesn't get flattened
+    unique, counts = np.unique(img_temp.reshape(-1, 3), return_counts=True, axis=0)
+    img_temp[:, :, 0], img_temp[:, :, 1], img_temp[:, :, 2] = unique[np.argmax(counts)]
+
+    show_img_compare(img_1, img_temp)
+
+
 def palette(clusters):
     width = 300
     palette = np.zeros((50, width, 3), np.uint8)
@@ -65,7 +52,51 @@ def palette(clusters):
     return palette
 
 
-clt = KMeans(n_clusters=5)
-clt.fit(img_1.reshape(-1, 3))
+def get_colors(img_path):
+    print("reading image")
+    img = cv.imread(img_path)
 
-show_img_compare(img_1, palette(clt))
+    print("reversing array")
+    img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+
+    print("clustering")
+    clt = KMeans(n_clusters=5, n_init=10)
+
+    print("fitting")
+    clt.fit(img.reshape(-1, 3))
+
+    print("showing image")
+
+    # index 0 = the image array of common colours
+    # index 1 = the array of arrays of common colours
+    return (palette(clt), clt.cluster_centers_)
+
+
+def convert_RGB_to_hex(R, G, B):
+    # RGB is a list of RGB [R, G, B]
+    R = int(R)
+    G = int(G)
+    B = int(B)
+
+    return "#{:X}{:X}{:X}".format(R, G, B)
+
+
+def get_all_hexes(common_color_RGBs):
+
+    hexes = []
+    for color in common_color_RGBs:
+        R, G, B = color
+        hexes.append((convert_RGB_to_hex(R, G, B)))
+
+    return hexes
+
+
+def get_image_pallette(img_path):
+    color_pallette, color_RGBs = get_colors(img_path)
+    color_hexes = get_all_hexes(color_RGBs)
+
+    pallette = Image.fromarray(color_pallette)
+    pallette_path = f"{UPLOAD_FOLDER}/current_pallette.jpg"
+    pallette.save(pallette_path)
+
+    return pallette_path, color_hexes

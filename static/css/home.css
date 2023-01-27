@@ -1,0 +1,155 @@
+body {
+  text-align: center;
+  margin: 1rem;
+  font-family: "Poppins", sans-serif;
+  background-color: #eeeeee;
+}
+
+h1 {
+  margin: 1rem;
+  font-weight: 900;
+}
+
+form {
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+
+img {
+  padding: 1rem, 1rem, 1rem, 1rem;
+  margin-bottom: 1rem;
+}
+.foot-icon {
+  color: #343a40;
+}
+
+.footer-container {
+  border-top: #787878 1px solid;
+  padding-top: 1rem;
+}
+
+label {
+  cursor: pointer;
+}
+
+.btn {
+  margin: 10px;
+}
+
+.imagename {
+  margin-top: 20px;
+}
+/* Right border on nav bar items */
+.border-md-right {
+  border-right: 1px solid silver;
+}
+
+@media (max-width: 768px) {
+  .border-md-right {
+    border-right: none;
+  }
+}
+
+.color-hex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.color-hex {
+  display: flex;
+  height: 200px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.my-hex {
+  position: relative;
+  top: 35%;
+}
+
+.img-fluid {
+  max-width: 700px;
+  width: 100%;
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.tool {
+  position: relative;
+  display: inline-block;
+}
+
+.tool .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 110%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tool .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tool:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  display: none;
+  margin: 1rem;
+}
+
+.loader-description {
+  display: none;
+  padding-bottom: 10px;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
