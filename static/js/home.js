@@ -14,6 +14,11 @@ const loaderFunction = (event) => {
   setTimeout(() => {
     loaderDescription.innerHTML = "Nice weather today isn't it? Hehe...😫";
   }, second * 20);
+
+  setTimeout(() => {
+    loaderDescription.innerHTML =
+      "Hmmmm, it shouldn't take this long to generate...try refreshing the page. Or the server is just being doo doo right now.";
+  }, second * 35);
 };
 
 const copyColor = (event) => {
