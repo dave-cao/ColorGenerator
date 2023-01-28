@@ -53,8 +53,12 @@ pip install -r requirements.txt
 ```sh
 python3 main.py
 ```
+2. Access the webpage via:
+```
+http://127.0.0.1:5000
+```
 
-2. Exit application
+3. Exit application
 ```
 ctl + c
 ```
