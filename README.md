@@ -7,7 +7,7 @@
 ![USAGE GIF OR PIC TO CAPTURE ATTENTION](./static/uploads/colorgenerator.gif)
 
 - I made a [youtube video](https://youtu.be/kYvVSWl5gaI) on this project.
-- [Live link]() to the project.
+- [Live link](https://colorgenerator.onrender.com/) to the project.
 - Check out my other projects [here](https://davidcao.xyz)!
 
 
