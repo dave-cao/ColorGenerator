@@ -1,4 +1,4 @@
-<h1 align='center'>🎨 Color Pallette Generator</h1>
+<h1 align='center'>🎨 Color Palette Generator</h1>
 
 <h4 align='center'>Generate a beautiful colorscheme from an image of your choosing.</h4>
 
