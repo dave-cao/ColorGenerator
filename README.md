@@ -8,6 +8,7 @@
 
 - I made a [youtube video](https://youtu.be/kYvVSWl5gaI) on this project.
 - [Live link](https://colorgenerator.onrender.com/) to the project.
+	- *Note: It will take some time for the website to load when you click the link*
 - Check out my other projects [here](https://davidcao.xyz)!
 
 
